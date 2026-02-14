@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amplify Studio | Shopify Design & Development Experts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #000000;
+            --primary-light: #1d1d1f;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --text-dark: #1d1d1f;
+            --text-medium: #424245;
+            --text-light: #6e6e73;
+            --bg-light: #f5f5f7;
+            --bg-white: #ffffff;
+            --border: #d2d2d7;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            line-height: 1.47059;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--bg-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 44px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            transition: opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 44px;
+            padding: 100px 0 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(0px);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            margin-bottom: 8px;
+            color: var(--bg-white);
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--bg-white);
+        }
+
+        .hero p {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 400;
+            letter-spacing: 0.007em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 22px;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 17px;
+            line-height: 1.17648;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .cta-button-outline {
+            background: transparent;
+            color: var(--bg-white);
+            border: 1px solid var(--bg-white);
+        }
+
+        .cta-button-outline:hover {
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--bg-white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .service-card {
+            padding: 50px 30px;
+            background: var(--bg-light);
+            border-radius: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: scale(1.02);
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 600;
+            letter-spacing: 0.009em;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card li {
+            padding: 10px 0;
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.42859;
+            font-weight: 400;
+            letter-spacing: -0.016em;
+        }
+
+        .service-card li::before {
+            content: "✓";
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-right: 12px;
+            opacity: 0.6;
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+            margin-bottom: 60px;
+        }
+
+        .package-card {
+            background: var(--bg-white);
+            border-radius: 18px;
+            padding: 48px 40px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .package-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .package-card.featured {
+            border-color: var(--text-dark);
+            background: var(--text-dark);
+            color: var(--bg-white);
+        }
+
+        .package-card.featured h3,
+        .package-card.featured .package-description,
+        .package-card.featured .package-price,
+        .package-card.featured li {
+            color: var(--bg-white);
+        }
+
+        .package-card.featured li::before {
+            color: var(--bg-white);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--bg-white);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .package-card h3 {
+            font-size: 32px;
+            line-height: 1.125;
+            font-weight: 600;
+            letter-spacing: 0.004em;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .package-description {
+            color: var(--text-light);
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+        }
+
+        .package-price {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            color: var(--text-dark);
+            margin: 24px 0;
+        }
+
+        .package-price small {
+            font-size: 21px;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 30px 0 0;
+        }
+
+        .package-features li {
+            padding: 14px 0;
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.42859;
+            font-weight: 400;
+            letter-spacing: -0.016em;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .package-card.featured .package-features li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-features li::before {
+            content: "✓";
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-right: 12px;
+            opacity: 0.6;
+        }
+
+        /* Maintenance Plans */
+        .maintenance {
+            padding: 100px 0;
+            background: var(--bg-white);
+        }
+
+        .maintenance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .maintenance-card {
+            background: var(--bg-light);
+            border-radius: 18px;
+            padding: 40px 32px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .maintenance-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .maintenance-card.popular {
+            background: var(--text-dark);
+            color: var(--bg-white);
+        }
+
+        .maintenance-card.popular h3,
+        .maintenance-card.popular .maintenance-price,
+        .maintenance-card.popular li,
+        .maintenance-card.popular .package-description {
+            color: var(--bg-white);
+        }
+
+        .maintenance-card.popular li::before {
+            color: var(--bg-white);
+        }
+
+        .maintenance-card h3 {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 600;
+            letter-spacing: 0.009em;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .maintenance-price {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 600;
+            letter-spacing: -0.002em;
+            color: var(--text-dark);
+            margin: 16px 0 24px;
+        }
+
+        .maintenance-price small {
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        .popular-badge {
+            background: var(--accent);
+            color: var(--bg-white);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        /* Add-ons */
+        .addons {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .addon-card {
+            background: var(--bg-white);
+            padding: 32px 28px;
+            border-radius: 18px;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .addon-card:hover {
+            transform: scale(1.02);
+        }
+
+        .addon-card h4 {
+            font-size: 19px;
+            line-height: 1.21053;
+            font-weight: 600;
+            letter-spacing: 0.012em;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .addon-price {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 600;
+            letter-spacing: 0.009em;
+            color: var(--text-medium);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--bg-white);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 12px;
+        }
+
+        .contact p {
+            color: var(--text-light);
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+            margin-bottom: 30px;
+        }
+
+        .email-reveal {
+            display: inline-block;
+            padding: 12px 22px;
+            background: var(--accent);
+            color: var(--bg-white);
+            border-radius: 980px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            font-size: 17px;
+            line-height: 1.17648;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            font-family: inherit;
+        }
+
+        .email-reveal:hover {
+            background: var(--accent-hover);
+        }
+
+        .email-display {
+            margin-top: 24px;
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+            color: var(--text-dark);
+        }
+
+        .email-display a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .email-display a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-light);
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--text-light);
+            font-size: 12px;
+            line-height: 1.33337;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1068px) {
+            .hero h1 {
+                font-size: 44px;
+            }
+
+            .hero p {
+                font-size: 24px;
+            }
+
+            .section-title h2 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 734px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 19px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .section-title p {
+                font-size: 19px;
+            }
+
+            .packages-grid,
+            .maintenance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .package-card,
+            .maintenance-card {
+                padding: 32px 24px;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="_images/amplify-studio-logo.png" alt="Amplify Studio">
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#packages">Packages</a>
+                <a href="#maintenance">Maintenance</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Amplify Your <span>Ecommerce Success</span></h1>
+                <p>Expert Shopify design and development that drives results.</p>
+                <div class="cta-group">
+                    <a href="#packages" class="cta-button">Explore Packages</a>
+                    <a href="#contact" class="cta-button cta-button-outline">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>What We Do</h2>
+                <p>Comprehensive ecommerce solutions tailored to your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Design & Build</h3>
+                    <ul>
+                        <li>Custom Shopify store design</li>
+                        <li>Theme customization</li>
+                        <li>Mobile-first approach</li>
+                        <li>Brand-aligned aesthetics</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Development</h3>
+                    <ul>
+                        <li>Custom functionality</li>
+                        <li>App integration</li>
+                        <li>Performance optimization</li>
+                        <li>Technical configuration</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Optimization</h3>
+                    <ul>
+                        <li>SEO implementation</li>
+                        <li>Speed optimization</li>
+                        <li>Conversion rate optimization</li>
+                        <li>Analytics setup</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Ongoing Support</h3>
+                    <ul>
+                        <li>Monthly maintenance</li>
+                        <li>Bug fixes & updates</li>
+                        <li>Priority support</li>
+                        <li>Strategic consultancy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Build Packages -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shopify Build Packages</h2>
+                <p>Choose the perfect package to launch or upgrade your store</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Starter Store</h3>
+                    <p class="package-description">Perfect for new businesses launching quickly</p>
+                    <div class="package-price">£750 <small>- £1,200</small></div>
+                    <ul class="package-features">
+                        <li>Complete Shopify setup</li>
+                        <li>Theme installation & basic customization</li>
+                        <li>Up to 5 pages</li>
+                        <li>Basic product setup (10 products)</li>
+                        <li>Payment & shipping configuration</li>
+                        <li>Essential plugins installed</li>
+                    </ul>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="package-badge">Popular</div>
+                    <h3>Growth Store</h3>
+                    <p class="package-description">For brands wanting a proper designed storefront</p>
+                    <div class="package-price">£1,500 <small>- £2,500</small></div>
+                    <ul class="package-features">
+                        <li>Everything in Starter package</li>
+                        <li>Custom homepage layout design</li>
+                        <li>Up to 20 products uploaded</li>
+                        <li>Essential apps configured</li>
+                        <li>Mobile optimization</li>
+                        <li>Basic SEO setup</li>
+                        <li>2 rounds of revisions</li>
+                    </ul>
+                </div>
+
+                <div class="package-card">
+                    <h3>Premium Experience</h3>
+                    <p class="package-description">For serious ecommerce brands</p>
+                    <div class="package-price">£3,000 <small>- £6,000+</small></div>
+                    <ul class="package-features">
+                        <li>Fully custom Shopify design</li>
+                        <li>Advanced features (subscriptions, bundles)</li>
+                        <li>Up to 50 products uploaded</li>
+                        <li>Custom sections & functionality</li>
+                        <li>Speed optimization</li>
+                        <li>SEO & conversion-focused</li>
+                        <li>Advanced app integrations</li>
+                        <li>Unlimited build revisions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maintenance Plans -->
+    <section id="maintenance" class="maintenance">
+        <div class="container">
+            <div class="section-title">
+                <h2>Monthly Support Plans</h2>
+                <p>Keep your store running smoothly with ongoing support</p>
+            </div>
+            <div class="maintenance-grid">
+                <div class="maintenance-card">
+                    <h3>Light Support</h3>
+                    <p class="package-description">Perfect for small shops</p>
+                    <div class="maintenance-price">£99<small>/mo</small></div>
+                    <ul class="package-features">
+                        <li>2 hours/month updates</li>
+                        <li>Bug fixes & minor edits</li>
+                        <li>Plugin/app monitoring</li>
+                        <li>Email support</li>
+                    </ul>
+                </div>
+
+                <div class="maintenance-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Business Care</h3>
+                    <p class="package-description">Ideal for growing stores</p>
+                    <div class="maintenance-price">£249<small>/mo</small></div>
+                    <ul class="package-features">
+                        <li>5 hours/month</li>
+                        <li>Monthly performance check</li>
+                        <li>Small design tweaks</li>
+                        <li>Priority response (48 hrs)</li>
+                        <li>Quarterly strategy call</li>
+                    </ul>
+                </div>
+
+                <div class="maintenance-card">
+                    <h3>Growth Partner</h3>
+                    <p class="package-description">For brands who want us "on call"</p>
+                    <div class="maintenance-price">£499<small>/mo</small></div>
+                    <ul class="package-features">
+                        <li>10 hours/month</li>
+                        <li>New landing pages & campaigns</li>
+                        <li>SEO improvements</li>
+                        <li>Priority response (24 hrs)</li>
+                        <li>Monthly strategy sessions</li>
+                    </ul>
+                </div>
+
+                <div class="maintenance-card">
+                    <h3>VIP Support</h3>
+                    <p class="package-description">For enterprise-level brands</p>
+                    <div class="maintenance-price">£800<small>+/mo</small></div>
+                    <ul class="package-features">
+                        <li>Unlimited requests</li>
+                        <li>Dedicated Slack/WhatsApp</li>
+                        <li>Same-day turnaround</li>
+                        <li>On-demand consultancy</li>
+                        <li>Strategic partnership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-ons -->
+    <section class="addons">
+        <div class="container">
+            <div class="section-title">
+                <h2>Add-On Services</h2>
+                <p>Enhance your store with specialist services</p>
+            </div>
+            <div class="addons-grid">
+                <div class="addon-card">
+                    <h4>Product Upload Service</h4>
+                    <p class="addon-price">£50 - £200</p>
+                </div>
+                <div class="addon-card">
+                    <h4>Email Marketing Setup</h4>
+                    <p class="addon-price">£300 - £800</p>
+                </div>
+                <div class="addon-card">
+                    <h4>SEO Boost Package</h4>
+                    <p class="addon-price">£400 - £1,000</p>
+                </div>
+                <div class="addon-card">
+                    <h4>Conversion Audit</h4>
+                    <p class="addon-price">£250 - £500</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Let's Build Something Amazing</h2>
+                <p>Ready to amplify your ecommerce business? Get in touch.</p>
+                <button class="email-reveal" onclick="revealEmail()">Contact Us</button>
+                <div id="emailDisplay" class="email-display" style="display: none;">
+                    <a href="mailto:support@amplifystudio.co.uk">support@amplifystudio.co.uk</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Amplify Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function revealEmail() {
+            const emailDisplay = document.getElementById('emailDisplay');
+            emailDisplay.style.display = 'block';
+            event.target.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

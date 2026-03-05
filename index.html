@@ -291,7 +291,7 @@
       <h2 class="h2">Ready to start<br>your project?</h2>
       <p class="lead">Tell us about your store and what you're trying to achieve. We'll get back to you within one business day.</p>
       <div class="c-details">
-        <div><span class="c-lbl">Email</span><div class="c-val"><a href="#" onclick="this.href='mailto:'+'support'+('@')+'amplifystudio.co.uk';return true;">support&#64;amplifystudio.co.uk</a></div></div>
+        <div><span class="c-lbl">Email</span><div class="c-val"><span id="contact-email"></span></div></div>
         <div><span class="c-lbl">Based in</span><div class="c-val">United Kingdom</div></div>
         <div><span class="c-lbl">Response time</span><div class="c-val">Within 1 business day</div></div>
       </div>
@@ -332,12 +332,12 @@
     <a href="#ai-services">AI for Business</a>
     <a href="#packages">Pricing</a>
     <a href="#faq">FAQ</a>
-    <a href="#" onclick="this.href='mailto:'+'support'+('@')+'amplifystudio.co.uk';return true;">support&#64;amplifystudio.co.uk</a>
+    <span id="footer-email"></span>
   </div>
-  <div class="foot-copy">&copy; 2025 Amplify Studio. All rights reserved.</div>
+  <div class="foot-copy">&copy; 2026 Amplify Studio. All rights reserved.</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Tab switching
 function switchTab(e,tab){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
@@ -367,6 +367,18 @@ function handleSubmit(e){
   const btn=e.target.querySelector('.cf-btn');
   btn.textContent='Sent ✓';btn.disabled=true;btn.style.opacity='0.5';
 }
+// Email obfuscation - assembled purely in JS, never in HTML
+(function(){
+  var u='support';
+  var d='amplifystudio.co.uk';
+  var e=u+'@'+d;
+  var link='<a href="mailto:'+e+'" style="color:inherit;border-bottom:1px solid rgba(255,255,255,0.15);">'+e+'</a>';
+  var footerLink='<a href="mailto:'+e+'" style="font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;">'+e+'</a>';
+  var c=document.getElementById('contact-email');
+  var f=document.getElementById('footer-email');
+  if(c) c.outerHTML=link;
+  if(f) f.outerHTML=footerLink;
+})();
 // Burger menu
 var burger=document.getElementById('burger');
 var navLinks=document.getElementById('nav-links');

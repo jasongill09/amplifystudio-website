@@ -361,11 +361,38 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   });
 });
 // Form submit
-function handleSubmit(e){
+async function handleSubmit(e){
   e.preventDefault();
-  document.getElementById('cf-ok').style.display='block';
-  const btn=e.target.querySelector('.cf-btn');
-  btn.textContent='Sent ✓';btn.disabled=true;btn.style.opacity='0.5';
+  const form=e.target;
+  const btn=form.querySelector('.cf-btn');
+  const ok=document.getElementById('cf-ok');
+  const err=document.getElementById('cf-err');
+  btn.textContent='Sending…';btn.disabled=true;btn.style.opacity='0.6';
+  if(err) err.style.display='none';
+  const data={
+    name:form.querySelector('#nm').value,
+    email:form.querySelector('#em').value,
+    website:form.querySelector('#ws').value,
+    service:form.querySelector('#svc').value,
+    message:form.querySelector('#msg').value
+  };
+  try{
+    const res=await fetch('https://formspree.io/f/xlgpeprg',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(data)
+    });
+    if(res.ok){
+      ok.style.display='block';
+      btn.textContent='Sent ✓';
+      form.reset();
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(ex){
+    btn.textContent='Send message';btn.disabled=false;btn.style.opacity='1';
+    if(err) err.style.display='block';
+  }
 }
 // Email obfuscation - assembled purely in JS, never in HTML
 (function(){

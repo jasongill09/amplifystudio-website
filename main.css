@@ -1,7 +1,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0c0c0c;--bg2:#141414;--bg3:#1c1c1c;
-  --white:#ffffff;--off-white:rgba(255,255,255,0.85);--muted:rgba(255,255,255,0.45);--border:rgba(255,255,255,0.1);
+  --white:#ffffff;--off-white:rgba(255,255,255,0.85);--muted:rgba(255,255,255,0.65);--border:rgba(255,255,255,0.1);
   --serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',-apple-system,sans-serif;
 }
 html{scroll-behavior:smooth}
@@ -57,8 +57,8 @@ h2.h2{font-family:var(--serif);font-size:clamp(2.2rem,4vw,4rem);font-weight:400;
 .svc-item h3{font-family:var(--serif);font-size:1.35rem;font-weight:400;margin-bottom:0.75rem;line-height:1.2}
 .svc-item p{font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300}
 .svc-list{list-style:none;margin-top:1.25rem;display:flex;flex-direction:column;gap:0.4rem}
-.svc-list li{font-size:0.8rem;color:rgba(255,255,255,0.3);padding-left:1rem;position:relative;line-height:1.5}
-.svc-list li::before{content:'–';position:absolute;left:0;color:rgba(255,255,255,0.2)}
+.svc-list li{font-size:0.8rem;color:rgba(255,255,255,0.65);padding-left:1rem;position:relative;line-height:1.5}
+.svc-list li::before{content:'–';position:absolute;left:0;color:rgba(255,255,255,0.65)}
 
 /* SPLIT ROWS */
 .split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)}
